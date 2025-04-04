@@ -1,7 +1,11 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:store_app/core/routing/router.dart';
 
 void main() {
-  runApp(StoreApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  runApp(const StoreApp());
 }
 
 class StoreApp extends StatelessWidget {
@@ -9,6 +13,14 @@ class StoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
+    );
   }
 }
+
+
+
+
+
