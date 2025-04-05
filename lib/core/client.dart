@@ -4,7 +4,7 @@ import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://10.10.1.23:8888/api/v1'));
+    dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.102:8888/api/v1'));
   }
   late final Dio dio;
 

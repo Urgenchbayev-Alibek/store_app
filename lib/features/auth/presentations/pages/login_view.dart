@@ -1,95 +1,206 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/login_bloc.dart';
-import '../bloc/login_event.dart';
-import '../bloc/login_state.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 class LoginView extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
-  final TextEditingController _loginController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _loginController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool isLoginValid = false;
+  bool isPasswordValid = false;
+  bool _obscurePassword = true;
+
+  void validateInputs() {
+    setState(() {
+      isLoginValid = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
+          .hasMatch(_loginController.text);
+      isPasswordValid = _passwordController.text.length >= 6;
+    });
+  }
+
+  OutlineInputBorder customBorder(bool isValid) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: isValid ? Colors.green : Colors.red,
+        width: 1.5,
+      ),
+    );
+  }
+
+  Icon? suffixIcon(bool isValid, String text) {
+    if (text.isEmpty) return null;
+    return Icon(
+      Icons.check_circle,
+      color: isValid ? Colors.green : Colors.red,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state) {
-          if (state is LoginSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('✅ Login muvaffaqiyatli!')),
-            );
-          } else if (state is LoginFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('❌ Xato: ${state.error}')),
-            );
-          }
-        },
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Login to your account",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-
-                SizedBox(height: 10),
-                TextField(
-                  controller: _loginController,
-                  decoration: InputDecoration(labelText: "Email"),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Login to your account",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                "It's great to see you again.",
+                style: TextStyle(color: Colors.grey[600]),
+              ),
+              SizedBox(height: 24),
+              TextField(
+                controller: _loginController,
+                onChanged: (_) => validateInputs(),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  enabledBorder: _loginController.text.isEmpty
+                      ? OutlineInputBorder(borderRadius: BorderRadius.circular(10))
+                      : customBorder(isLoginValid),
+                  focusedBorder: customBorder(isLoginValid),
+                  suffixIcon: suffixIcon(isLoginValid, _loginController.text),
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 ),
-
-                SizedBox(height: 10),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(labelText: "Password"),
-                ),
-
-                SizedBox(height: 20),
-                state is LoginLoading
-                    ? CircularProgressIndicator()
-                    : ElevatedButton(
-                  onPressed: () {
-                    context.read<LoginBloc>().add(
-                      LoginButtonPressed(
-                        login: _loginController.text,
-                        password: _passwordController.text,
+              ),
+              SizedBox(height: 16),
+              TextField(
+                controller: _passwordController,
+                obscureText: _obscurePassword,
+                onChanged: (_) => validateInputs(),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  enabledBorder: _passwordController.text.isEmpty
+                      ? OutlineInputBorder(borderRadius: BorderRadius.circular(10))
+                      : customBorder(isPasswordValid),
+                  focusedBorder: customBorder(isPasswordValid),
+                  suffixIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (_passwordController.text.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 4),
+                          child: Icon(
+                            isPasswordValid
+                                ? Icons.check_circle
+                                : Icons.error,
+                            color: isPasswordValid ? Colors.green : Colors.red,
+                          ),
+                        ),
+                      IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
                       ),
-                    );
+                    ],
+                  ),
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                ),
+              ),
+              SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {
                   },
-                  child: Text("Login"),
+                  child: Text(
+                    "Reset your password",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
                 ),
-
-                SizedBox(height: 20),
-                Text("Or"),
-
-                SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.login),
-                  label: Text("Login with Google"),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                onPressed: () {
+                  validateInputs();
+                },
+                child: Text("Login"),
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text("Or"),
+                  ),
+                  Expanded(child: Divider()),
+                ],
+              ),
+              SizedBox(height: 16),
+              OutlinedButton.icon(
+                icon: SvgPicture.asset("assets/icons/google_logo.svg",
+                    height: 20, width: 20),
+                label: Text("Login with Google"),
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  side: BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
+              SizedBox(height: 12),
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1877F2),
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                icon: SvgPicture.asset("assets/icons/facebook.svg",
+                    height: 20, width: 20, color: Colors.white),
+                label: Text("Login with Facebook"),
+                onPressed: () {},
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: TextButton(
                   onPressed: () {},
+                  child: Text(
+                    "Don't have an account? Join",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
-
-                SizedBox(height: 10),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.facebook),
-                  label: Text("Login with Facebook"),
-                  onPressed: () {},
-                ),
-
-                SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {},
-                  child: Text("Don't have an account? Join"),
-                ),
-              ],
-            ),
-          );
-        },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
