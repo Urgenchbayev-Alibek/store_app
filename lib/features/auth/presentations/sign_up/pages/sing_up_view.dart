@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../widgets/bbbbb.dart';
+import '../widgets/bottom_navigation.dart';
 import '../widgets/bottom_text.dart';
 import '../widgets/custom_buttom.dart';
 import '../widgets/divider.dart';
@@ -10,12 +8,12 @@ import '../widgets/input_field.dart';
 import '../widgets/social_button.dart';
 
 
-class SignUpPage extends StatefulWidget {
+class SignUpView extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageState extends State<SignUpView> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
