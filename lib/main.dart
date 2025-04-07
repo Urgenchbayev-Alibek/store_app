@@ -36,7 +36,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(
-    ScreenUtilInit(designSize: const Size(390, 844), child: const MyApp()),
+    ScreenUtilInit(designSize: const Size(390, 844), child: const MyApp(),),
   );
 }
 
