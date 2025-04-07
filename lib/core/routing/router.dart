@@ -1,11 +1,17 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store_app/core/client.dart';
 import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/data/repositories/auth_repository.dart';
+import 'package:store_app/main.dart';
+import '../../features/auth/login/bloc/login_bloc.dart';
+import '../../features/auth/login/pages/login_view.dart';
+import '../../features/onboarding/pages/onboarding_view.dart';
+import '../../features/onboarding/pages/splash_screen_view.dart';
 
-import '../../features/auth/presentations/onboarding/pages/onboarding_view.dart';
-import '../../features/auth/presentations/onboarding/pages/splash_screen_view.dart';
-import '../../features/auth/presentations/sign_up/pages/sing_up_view.dart';
 final GoRouter router = GoRouter(
-  initialLocation: Routes.onboarding,
+  navigatorKey: navigatorKey,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -15,9 +21,14 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
+
     GoRoute(
-      path: Routes.signUp,
-      builder: (context, state) => SignUpView(),
+      path: Routes.login,
+      builder: (context, state) => BlocProvider(
+          create: (context) => LoginBloc(
+                authRepository: AuthRepository(client: ApiClient()),
+              ),
+          child: LoginView()),
     ),
   ],
 );
