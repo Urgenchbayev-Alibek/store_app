@@ -3,12 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/core/client.dart';
 import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/data/repositories/auth_repository.dart';
-import '../../features/auth/presentations/bloc/login_bloc.dart';
-import '../../features/auth/presentations/pages/login_view.dart';
+import 'package:store_app/main.dart';
+import '../../features/auth/login/bloc/login_bloc.dart';
+import '../../features/auth/login/pages/login_view.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
+  navigatorKey: navigatorKey,
   initialLocation: Routes.login,
   routes: [
     GoRoute(
