@@ -16,4 +16,21 @@ class AuthRepository {
     await SecureStorage.saveToken(token: token);
     jwt = token;
   }
+  Future<void> logout() async {
+    await SecureStorage.deleteToken();
+    await SecureStorage.deleteCredentials();
+  }
+
+  Future<bool> refreshToken() async {
+    var credentials = await SecureStorage.getCredentials();
+    if (credentials?['login'] == null || credentials?['password'] == null) {
+      return false;
+    } else {
+      var jwt = await client.login(login: credentials!['login']!, password: credentials['password']!);
+      await SecureStorage.deleteToken();
+      await SecureStorage.saveToken(token: jwt);
+      return true;
+    }
+  }
+
 }

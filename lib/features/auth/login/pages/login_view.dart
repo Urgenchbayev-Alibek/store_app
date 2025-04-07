@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/features/auth/login/bloc/login_bloc.dart';
+import 'package:store_app/features/auth/login/bloc/login_event.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -16,8 +21,7 @@ class _LoginViewState extends State<LoginView> {
 
   void validateInputs() {
     setState(() {
-      isLoginValid = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
-          .hasMatch(_loginController.text);
+      isLoginValid = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(_loginController.text);
       isPasswordValid = _passwordController.text.length >= 6;
     });
   }
@@ -65,15 +69,11 @@ class _LoginViewState extends State<LoginView> {
                 onChanged: (_) => validateInputs(),
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  enabledBorder: _loginController.text.isEmpty
-                      ? OutlineInputBorder(borderRadius: BorderRadius.circular(10))
-                      : customBorder(isLoginValid),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  enabledBorder: _loginController.text.isEmpty ? OutlineInputBorder(borderRadius: BorderRadius.circular(10)) : customBorder(isLoginValid),
                   focusedBorder: customBorder(isLoginValid),
                   suffixIcon: suffixIcon(isLoginValid, _loginController.text),
-                  contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 ),
               ),
               SizedBox(height: 16),
@@ -83,11 +83,8 @@ class _LoginViewState extends State<LoginView> {
                 onChanged: (_) => validateInputs(),
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  enabledBorder: _passwordController.text.isEmpty
-                      ? OutlineInputBorder(borderRadius: BorderRadius.circular(10))
-                      : customBorder(isPasswordValid),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  enabledBorder: _passwordController.text.isEmpty ? OutlineInputBorder(borderRadius: BorderRadius.circular(10)) : customBorder(isPasswordValid),
                   focusedBorder: customBorder(isPasswordValid),
                   suffixIcon: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -96,17 +93,13 @@ class _LoginViewState extends State<LoginView> {
                         Padding(
                           padding: const EdgeInsets.only(right: 4),
                           child: Icon(
-                            isPasswordValid
-                                ? Icons.check_circle
-                                : Icons.error,
+                            isPasswordValid ? Icons.check_circle : Icons.error,
                             color: isPasswordValid ? Colors.green : Colors.red,
                           ),
                         ),
                       IconButton(
                         icon: Icon(
-                          _obscurePassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
+                          _obscurePassword ? Icons.visibility_off : Icons.visibility,
                           color: Colors.grey,
                         ),
                         onPressed: () {
@@ -117,16 +110,14 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ],
                   ),
-                  contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 ),
               ),
               SizedBox(height: 8),
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {
-                  },
+                  onTap: () {},
                   child: Text(
                     "Reset your password",
                     style: TextStyle(
@@ -142,13 +133,24 @@ class _LoginViewState extends State<LoginView> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   padding: EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
                 onPressed: () {
                   validateInputs();
+                  if (isLoginValid && isPasswordValid) {
+                    context.read<LoginBloc>().add(
+                          LoginButtonPressed(
+                            login: _loginController.text,
+                            password: _passwordController.text,
+                          ),
+                        );
+                  }
+                  context.go(Routes.signUp);
                 },
-                child: Text("Login"),
+                child: Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               SizedBox(height: 20),
               Row(
@@ -163,15 +165,13 @@ class _LoginViewState extends State<LoginView> {
               ),
               SizedBox(height: 16),
               OutlinedButton.icon(
-                icon: SvgPicture.asset("assets/icons/google_logo.svg",
-                    height: 20, width: 20),
+                icon: SvgPicture.asset("assets/icons/google_logo.svg", height: 20, width: 20),
                 label: Text("Login with Google"),
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 14),
                   side: BorderSide(color: Colors.grey),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               SizedBox(height: 12),
@@ -180,11 +180,9 @@ class _LoginViewState extends State<LoginView> {
                   backgroundColor: Color(0xFF1877F2),
                   foregroundColor: Colors.white,
                   padding: EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
-                icon: SvgPicture.asset("assets/icons/facebook.svg",
-                    height: 20, width: 20, color: Colors.white),
+                icon: SvgPicture.asset("assets/icons/facebook.svg", height: 20, width: 20, color: Colors.white),
                 label: Text("Login with Facebook"),
                 onPressed: () {},
               ),
@@ -205,6 +203,3 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
-
-
-
