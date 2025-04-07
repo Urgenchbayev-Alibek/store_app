@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/bottom_text.dart';
 import '../widgets/custom_buttom.dart';
@@ -82,7 +81,6 @@ class _SignUpPageState extends State<SignUpView> {
   }
 }
 
-
 class TermsText extends StatelessWidget {
   const TermsText({super.key});
 
@@ -94,5 +92,6 @@ class TermsText extends StatelessWidget {
     );
   }
 }
+
 
 
