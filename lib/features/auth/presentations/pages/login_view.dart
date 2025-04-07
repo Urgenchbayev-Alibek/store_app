@@ -208,13 +208,3 @@ class _LoginViewState extends State<LoginView> {
 
 
 
-
-
-class MY extends StatelessWidget {
-  const MY({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
