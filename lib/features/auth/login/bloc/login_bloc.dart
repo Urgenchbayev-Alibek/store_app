@@ -10,15 +10,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginButtonPressed>(_onLoginButtonPressed);
   }
 
-  Future<void> _onLoginButtonPressed(
-      LoginButtonPressed event, Emitter<LoginState> emit) async {
-    emit(LoginLoading()); // 🔹 Holat: Yuklanmoqda
+  Future<void> _onLoginButtonPressed(LoginButtonPressed event, Emitter<LoginState> emit) async {
+    emit(LoginLoading());
 
     try {
       await authRepository.login(event.login, event.password);
-      emit(LoginSuccess()); // 🔹 Holat: Muvaffaqiyatli
+      emit(LoginSuccess());
     } catch (e) {
-      emit(LoginFailure(error: e.toString())); // 🔹 Holat: Xato
+      emit(LoginFailure(error: e.toString()));
     }
   }
 }
