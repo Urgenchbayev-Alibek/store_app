@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/routing/routes.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/bottom_text.dart';
 import '../widgets/custom_buttom.dart';
@@ -65,7 +67,7 @@ class _SignUpPageState extends State<SignUpView> {
             SizedBox(height: 20),
             GestureDetector(
               onTap: validateEmail,
-              child: CustomButton(text: "Create an Account", color: Colors.blue),
+              child: CustomButton(text: "Create an Account", color: Colors.grey,callback: () => context.go(Routes.login),),
             ),
             SizedBox(height: 20),
             Dividerr(),

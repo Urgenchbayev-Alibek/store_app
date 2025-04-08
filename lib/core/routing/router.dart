@@ -6,12 +6,13 @@ import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/main.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
+import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.login,
+  initialLocation: Routes.onboarding,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -29,6 +30,10 @@ final GoRouter router = GoRouter(
                 authRepository: AuthRepository(client: ApiClient()),
               ),
           child: LoginView()),
+    ),
+    GoRoute(
+      path: Routes.signUp,
+      builder: (context, state) => SignUpView(),
     ),
   ],
 );
