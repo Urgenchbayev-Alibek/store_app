@@ -145,7 +145,7 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         );
                   }
-                  context.go(Routes.signUp);
+                  context.go(Routes.home);
                 },
                 child: Text(
                   "Login",
