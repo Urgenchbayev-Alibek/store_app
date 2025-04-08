@@ -8,7 +8,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          "Login Success",
+          "Home",
           style: TextStyle(fontSize: 50, color: Colors.green),
         ),
       ),
