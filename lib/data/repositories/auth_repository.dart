@@ -1,6 +1,8 @@
 import 'package:store_app/core/client.dart';
 import 'package:store_app/core/secure_storage.dart';
 
+import '../models/user_model.dart';
+
 class AuthRepository {
   AuthRepository({required this.client});
 
@@ -16,6 +18,30 @@ class AuthRepository {
     await SecureStorage.saveToken(token: token);
     jwt = token;
   }
+
+  Future<bool> signUp({
+    required String fullName,
+    required String email,
+    required String password,
+  }) async {
+    final result = await client.signUp(
+      user: UserModel(
+        password: password,
+        email: email,
+        fullName: fullName,
+      ),
+    );
+    if (result["result"]) {
+      SecureStorage.deleteToken();
+      SecureStorage.saveToken(token: result["token"]);
+      SecureStorage.deleteCredentials();
+      SecureStorage.saveCredentials(login: email, password: password);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future<void> logout() async {
     await SecureStorage.deleteToken();
     await SecureStorage.deleteCredentials();
@@ -32,5 +58,4 @@ class AuthRepository {
       return true;
     }
   }
-
 }
