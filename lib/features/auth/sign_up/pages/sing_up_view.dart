@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import '../widgets/bottom_navigation.dart';
 import '../widgets/bottom_text.dart';
 import '../widgets/custom_buttom.dart';
 import '../widgets/divider.dart';
 import '../widgets/input_field.dart';
 import '../widgets/social_button.dart';
-
 
 class SignUpView extends StatefulWidget {
   @override
@@ -32,11 +31,9 @@ class _SignUpPageState extends State<SignUpView> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Column(
@@ -45,17 +42,13 @@ class _SignUpPageState extends State<SignUpView> {
               "Create an account",
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
             ),
-             BottomText(),
+            BottomText(),
           ],
         ),
-
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             SizedBox(height: 30),
             InputField(label: "Full Name", hint: "Enter your full name", controller: fullNameController),
@@ -77,11 +70,10 @@ class _SignUpPageState extends State<SignUpView> {
           ],
         ),
       ),
-        bottomNavigationBar:BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(),
     );
   }
 }
-
 
 class TermsText extends StatelessWidget {
   const TermsText({super.key});
@@ -94,5 +86,3 @@ class TermsText extends StatelessWidget {
     );
   }
 }
-
-
