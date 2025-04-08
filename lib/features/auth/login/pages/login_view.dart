@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../core/routing/routes.dart';
+import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/features/auth/login/bloc/login_bloc.dart';
+import 'package:store_app/features/auth/login/bloc/login_event.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -135,22 +137,31 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 onPressed: () {
                   validateInputs();
+                  if (isLoginValid && isPasswordValid) {
+                    context.read<LoginBloc>().add(
+                          LoginButtonPressed(
+                            login: _loginController.text,
+                            password: _passwordController.text,
+                          ),
+                        );
+                  }
+                  context.go(Routes.signUp);
                 },
-                child: Text("Login", style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               SizedBox(height: 20),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(child: Divider()),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text("Or"),
-                    ),
-                    Expanded(child: Divider()),
-                  ],
-                ),
+              Row(
+                children: [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text("Or"),
+                  ),
+                  Expanded(child: Divider()),
+                ],
               ),
               SizedBox(height: 16),
               OutlinedButton.icon(
@@ -176,36 +187,19 @@ class _LoginViewState extends State<LoginView> {
                 onPressed: () {},
               ),
               SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    "Don't have an account? ",
+              Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Don't have an account? Join",
                     style: TextStyle(color: Colors.black),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      context.push(Routes.signUp);
-                    },
-                    child: Text(
-                      "Join",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
         ),
       ),
     );
-  }
-}
-
-class MY extends StatelessWidget {
-  const MY({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
