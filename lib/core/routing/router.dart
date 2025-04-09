@@ -65,7 +65,7 @@ final GoRouter router = GoRouter(
     GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => HomeView(),
+      builder: (context, state) => DiscoverPage(),
     ),
   ],
 );
