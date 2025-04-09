@@ -14,13 +14,14 @@ import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
 import '../../features/auth/forgot_password/pages/reset_password_view.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
+import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.splashScreen,
+  initialLocation: Routes.notification,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -64,8 +65,8 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
     GoRoute(
-      path: Routes.home,
-      builder: (context, state) => DiscoverPage(),
+      path: Routes.notification,
+      builder: (context, state) => EmptyNotificationsPage(),
     ),
   ],
 );
