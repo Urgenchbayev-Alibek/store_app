@@ -35,6 +35,7 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
+
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(
@@ -63,7 +64,7 @@ final GoRouter router = GoRouter(
     GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => HomeView(),
+      builder: (context, state) => DiscoverPage(),
     ),
   ],
 );

@@ -8,4 +8,5 @@ class Routes {
   static const enterOtp = '/enter-otp';
   static const resetPassword = '/reset-password';
   static const home = "/";
+  static const notification = '/notification';
 }
