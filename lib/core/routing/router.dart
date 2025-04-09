@@ -8,7 +8,6 @@ import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/home/pages/home_view.dart';
 import 'package:store_app/main.dart';
-
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
 import '../../features/auth/forgot_password/pages/reset_password_view.dart';
@@ -20,7 +19,7 @@ import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.splashScreen,
+  initialLocation: Routes.forgotPassword,
   routes: [
     GoRoute(
       path: Routes.splashScreen,

@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:store_app/core/interceptor.dart';
 
 import '../data/models/user_model.dart';
 import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));
-    dio.interceptors.add(Interceptor());
+    dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.192:8888/api/v1'));
+    dio.interceptors.add(AuthInterceptor());
   }
   late final Dio dio;
 
@@ -39,5 +40,76 @@ class ApiClient {
       };
     }
   }
+  Future<T> genericGetRequest<T>(String path, {Map<String, dynamic>? queryParams}) async {
+    var response = await dio.get(path, queryParameters: queryParams);
+    if (response.statusCode == 200) {
+      return response.data as T;
+    } else {
+      throw DioException(requestOptions: response.requestOptions, response: response);
+    }
+  }
+
+  Future<bool> postResetEmail(String email) async {
+    try{
+      var response = await dio.post(
+        "/auth/reset-password/email",
+        data: {
+          'email': email,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    }catch(e){
+      print(e.toString());
+      throw Exception();
+    }
+  }
+
+  Future<bool> postResetEmailCode(String email, String code) async {
+    try {
+      var response = await dio.post(
+        "/auth/reset-password/verify",
+        data: {
+          'email': email,
+          'code': code,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw Exception("xato ketdi reset emailCode");
+    }
+  }
+
+  Future<bool> postResetEmailCodeReset(
+      String email,
+      String code,
+      String password,
+      ) async {
+    try {
+      var response = await dio.post(
+        "/auth/reset-password/reset",
+        data: {
+          'email': email,
+          'password': password,
+          'code': code,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw Exception("xato ketdi reset emailCode");
+    }
+  }
+
 
 }
