@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/utils/colors.dart';
 import '../../../common/store_text_button.dart';
 import '../../../common/store_text_form_field.dart';

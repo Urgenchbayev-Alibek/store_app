@@ -31,8 +31,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:store_app/core/routing/routes.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../common/store_text_button.dart';
 
 class OnboardingBottomNavBar extends StatelessWidget {
@@ -55,7 +55,7 @@ class OnboardingBottomNavBar extends StatelessWidget {
         height: 54.h,
         showArrow: true,
         callback: () {
-          context.go(Routes.signUp); // yoki context.push('/signup') agar backga qaytmoqchi bo‘lsangiz
+          context.go(Routes.signUp);
         },
       ),
     );
