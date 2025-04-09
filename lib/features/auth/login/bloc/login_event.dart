@@ -5,7 +5,6 @@ abstract class LoginEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-// 🔹 Login tugmasi bosilganda
 class LoginButtonPressed extends LoginEvent {
   final String login;
   final String password;
