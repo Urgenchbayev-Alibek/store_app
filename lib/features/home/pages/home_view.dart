@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/home_appbar.dart';
 import '../widgets/home_body.dart';
 import '../widgets/navigation_bar.dart';
 import '../widgets/search_and_wallet_bar.dart';

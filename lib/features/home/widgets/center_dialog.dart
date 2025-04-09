@@ -6,33 +6,45 @@ class CenterDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      child: Container(
-        width: 273,
-        height: 173,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              blurRadius: 24,
-              offset: Offset(0, 16),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            'This is a shadow dialog',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black,
-            ),
+    return CupertinoAlertDialog(
+      title: Text(
+        '"App" Would Like To Send You\nNotifications',
+        style: TextStyle(fontSize: 18),
+        textAlign: TextAlign.center,
+      ),
+      content: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Text(
+          'Notifications may include alerts,\nsounds, and icon badges. These can be\nconfigured in Settings.',
+          style: TextStyle(
+            fontSize: 14,
+            color: Color(0xff000000),
           ),
+          textAlign: TextAlign.center,
         ),
       ),
+      actions: [
+        CupertinoDialogAction(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          isDestructiveAction: false,
+          textStyle: TextStyle(
+            color: CupertinoColors.activeBlue,
+          ),
+          child: Text("Don't Allow"),
+        ),
+        CupertinoDialogAction(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          isDefaultAction: true,
+          textStyle: TextStyle(
+            color: CupertinoColors.activeBlue, 
+          ),
+          child: Text("Allow"),
+        ),
+      ],
     );
   }
 }

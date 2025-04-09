@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'center_dialog.dart';
-
-class HomeView extends StatelessWidget implements PreferredSizeWidget {
-  const HomeView({Key? key}) : super(key: key);
+class DiscoverAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const DiscoverAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
