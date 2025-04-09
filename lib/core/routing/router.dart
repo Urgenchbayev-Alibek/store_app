@@ -8,18 +8,21 @@ import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/home/pages/home_view.dart';
 import 'package:store_app/main.dart';
+
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
 import '../../features/auth/forgot_password/pages/reset_password_view.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
+import '../../features/notification/widgets/empty_notifications_page.dart';
+import '../../features/notification/widgets/notifications_page.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.forgotPassword,
+  initialLocation: Routes.home,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -65,6 +68,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.home,
       builder: (context, state) => DiscoverPage(),
+    ),
+    GoRoute(
+      path: Routes.notification,
+      builder: (context, state) => NotificationsPage(),
     ),
   ],
 );
