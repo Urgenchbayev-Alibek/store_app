@@ -7,12 +7,13 @@ import 'package:store_app/main.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
 import '../../features/auth/sign_up/pages/sing_up_view.dart';
+import '../../features/home/pages/home_view.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.onboarding,
+  initialLocation: Routes.home,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -34,6 +35,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.signUp,
       builder: (context, state) => SignUpView(),
+    ),
+    GoRoute(
+      path: Routes.home,
+      builder: (context, state) => DiscoverPage(),
     ),
   ],
 );
