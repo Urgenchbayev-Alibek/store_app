@@ -20,7 +20,7 @@ import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.splashScreen,
+  initialLocation: Routes.enterOtp,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
