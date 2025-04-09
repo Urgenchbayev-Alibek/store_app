@@ -1,50 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'center_dialog.dart';
-
-class HomeView extends StatelessWidget implements PreferredSizeWidget {
-  const HomeView({Key? key}) : super(key: key);
+class SearchAndWalletBar extends StatelessWidget {
+  const SearchAndWalletBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 16),
-        child: Text(
-          'Discover',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 52,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/no_result.svg',
+                  width: 24,
+                  height: 24,
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Search for clothes...',
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                SvgPicture.asset(
+                  'assets/icons/microphone.svg',
+                  width: 17,
+                  height: 21,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      leadingWidth: 200,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: InkWell(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => const CenterDialog(),
-              );
-            },
+        SizedBox(width: 8),
+        Container(
+          width: 52,
+          height: 52,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Center(
             child: SvgPicture.asset(
-              'assets/icons/no_notification.svg',
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+              'assets/icons/wallet.svg',
+              color: Colors.white,
             ),
           ),
         ),
       ],
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
