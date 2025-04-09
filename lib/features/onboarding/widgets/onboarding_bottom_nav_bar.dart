@@ -55,7 +55,7 @@ class OnboardingBottomNavBar extends StatelessWidget {
         height: 54.h,
         showArrow: true,
         callback: () {
-          context.go(Routes.signUp); // yoki context.push('/signup') agar backga qaytmoqchi bo‘lsangiz
+          context.go(Routes.signUp);
         },
       ),
     );
