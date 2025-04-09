@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../notification/widgets/empty_notifications_page.dart';
+import '../../notification/widgets/notifications_page.dart';
 
 class CenterDialog extends StatelessWidget {
   const CenterDialog({super.key});
@@ -37,10 +39,15 @@ class CenterDialog extends StatelessWidget {
         CupertinoDialogAction(
           onPressed: () {
             Navigator.of(context).pop();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => NotificationsPage(),
+              ),
+            );
           },
           isDefaultAction: true,
           textStyle: TextStyle(
-            color: CupertinoColors.activeBlue, 
+            color: CupertinoColors.activeBlue,
           ),
           child: Text("Allow"),
         ),

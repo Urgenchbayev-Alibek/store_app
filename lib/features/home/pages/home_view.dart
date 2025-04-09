@@ -22,6 +22,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
+            SearchAndWalletBar(),
             SizedBox(height:28),
             CategoryTabs(
               selectedIndex: selectedTabIndex,
