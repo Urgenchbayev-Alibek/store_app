@@ -117,7 +117,7 @@ class _LoginViewState extends State<LoginView> {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {context.push(Routes.forgotPassword);},
                   child: Text(
                     "Reset your password",
                     style: TextStyle(
