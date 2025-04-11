@@ -40,6 +40,7 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
+
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(

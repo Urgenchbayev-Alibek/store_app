@@ -51,7 +51,7 @@ class SearchAndWalletBar extends StatelessWidget {
           ),
           child: Center(
             child: SvgPicture.asset(
-              'assets/icons/wallet.svg',
+              'assets/icons/filters.svg',
               color: Colors.white,
             ),
           ),
