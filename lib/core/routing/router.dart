@@ -15,7 +15,7 @@ import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
-import '../../features/notification/widgets/notifications_page.dart';
+import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
@@ -99,7 +99,6 @@ final GoRouter router = GoRouter(
         child: HomeView(),
       ),
     ),
-
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),

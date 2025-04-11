@@ -9,7 +9,7 @@ class BottomNavBar extends StatelessWidget {
       currentIndex: 0,
       type: BottomNavigationBarType.fixed,
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Saved"),
         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "Cart"),
