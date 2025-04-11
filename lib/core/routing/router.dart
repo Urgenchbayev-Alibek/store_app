@@ -13,6 +13,7 @@ import '../../features/auth/login/pages/login_view.dart';
 import '../../features/auth/sign_up/bloc/sign_up_bloc.dart';
 import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
+import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
 import '../../features/notification/widgets/notifications_page.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
@@ -91,8 +92,14 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => DiscoverPage(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeBloc(
+          repo: context.read(),
+        ),
+        child: HomeView(),
+      ),
     ),
+
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),

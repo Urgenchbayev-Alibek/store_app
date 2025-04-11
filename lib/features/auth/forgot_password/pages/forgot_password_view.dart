@@ -31,7 +31,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
       body: BlocListener<ResetPasswordBloc, ResetState>(
         listener: (context, state) {
           if (state.status == ResetStatus.success) {
-            context.go(Routes.enterOtp, extra: emailController.text.trim());
+            context.push(Routes.enterOtp, extra: emailController.text.trim());
           } else if (state.status == ResetStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message ?? 'Noma’lum xatolik')),
