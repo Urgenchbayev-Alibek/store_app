@@ -5,12 +5,12 @@ import '../widgets/navigation_bar.dart';
 import '../widgets/search_and_wallet_bar.dart';
 import '../widgets/category_tabs.dart';
 
-class DiscoverPage extends StatefulWidget {
+class HomeView extends StatefulWidget {
   @override
-  _DiscoverPageState createState() => _DiscoverPageState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _DiscoverPageState extends State<DiscoverPage> {
+class _HomeViewState extends State<HomeView> {
   int selectedTabIndex = 1;
 
   @override

@@ -7,6 +7,7 @@ import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/home/pages/home_view.dart';
+import 'package:store_app/features/saved_items/pages/saved_item_view.dart';
 import 'package:store_app/main.dart';
 
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
@@ -22,7 +23,7 @@ import '../../features/onboarding/pages/splash_screen_view.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.home,
+  initialLocation: Routes.savedItems,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -38,7 +39,6 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
-
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(
@@ -64,14 +64,21 @@ final GoRouter router = GoRouter(
         return EnterOtpView(emailAddress: state.extra == null ? "Example@example.com" : state.extra as String);
       },
     ),
-    GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
+    GoRoute(
+      path: Routes.resetPassword,
+      builder: (context, state) => ResetPasswordView(),
+    ),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => DiscoverPage(),
+      builder: (context, state) => HomeView(),
     ),
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
+    ),
+    GoRoute(
+      path: Routes.savedItems,
+      builder: (context, state) => SavedItemView(),
     ),
   ],
 );
