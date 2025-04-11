@@ -6,7 +6,7 @@ import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.249:8888/api/v1'));
+    dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));
     dio.interceptors.add(AuthInterceptor());
   }
   late final Dio dio;
@@ -108,6 +108,16 @@ class ApiClient {
       }
     } catch (e) {
       throw Exception("xato ketdi reset emailCode");
+    }
+  }
+
+  Future<List<dynamic>> fetchProductsForHome() async {
+    final response = await dio.get('/products/list');
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data;
+      return data;
+    } else {
+      throw Exception("Error in products");
     }
   }
 
