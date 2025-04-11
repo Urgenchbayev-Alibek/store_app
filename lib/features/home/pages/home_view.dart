@@ -1,43 +1,40 @@
 import 'package:flutter/material.dart';
-import '../widgets/home_appbar.dart';
-import '../widgets/home_body.dart';
-import '../widgets/navigation_bar.dart';
-import '../widgets/search_and_wallet_bar.dart';
+import 'package:store_app/features/common/store_app_bar.dart';
+
 import '../widgets/category_tabs.dart';
+import '../widgets/navigation_bar.dart';
+import '../widgets/products_grid.dart';
 
-class HomeView extends StatefulWidget {
-  @override
-  _HomeViewState createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  int selectedTabIndex = 1;
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DiscoverAppBar(),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            SearchAndWalletBar(),
-            SizedBox(height:28),
-            CategoryTabs(
-              selectedIndex: selectedTabIndex,
-              onTabSelected: (index) {
-                setState(() {
-                  selectedTabIndex = index;
-                });
-              },
-            ),
-            SizedBox(height: 16),
-            DiscoverItems(),
-          ],
-        ),
+      appBar: StoreAppBar(
+        title: "Discover",
+        showLeading: false,
+        centerTitle: false,
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      body: ListView(
+        children: const [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Search for clothes...",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+              ),
+            ),
+          ),
+          CategoryTabs(),
+          ProductGrid(),
+        ],
+      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

@@ -1,42 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CategoryTabs extends StatelessWidget {
-  final List<String> tabs = ["All", "Tshirts", "Jeans", "Shoes"];
-  final int selectedIndex;
-  final Function(int) onTabSelected;
-
-   CategoryTabs({
-    required this.selectedIndex,
-    required this.onTabSelected,
-  });
+  const CategoryTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final categories = ['All', 'Tshirts', 'Jeans', 'Shoes'];
     return SizedBox(
-      height: 36,
+      height: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: tabs.length,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: categories.length,
         itemBuilder: (context, index) {
-          bool selected = selectedIndex == index;
-          return GestureDetector(
-            onTap: () => onTabSelected(index),
-            child: Container(
-              width: 92,
-              height: 36,
-              margin: EdgeInsets.only(right: 8),
-              decoration: BoxDecoration(
-                color: selected ? Colors.black : Colors.white,
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                tabs[index],
-                style: TextStyle(
-                  color: selected ? Colors.white : Colors.black,
-                ),
-              ),
+          return Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: ChoiceChip(
+              label: Text(categories[index]),
+              selected: index == 1,
+              onSelected: (_) {},
             ),
           );
         },
