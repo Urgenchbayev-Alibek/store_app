@@ -6,9 +6,10 @@ import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));
+    dio = Dio(BaseOptions(baseUrl: 'http://172.16.37.245:8888/api/v1'));
     dio.interceptors.add(AuthInterceptor());
   }
+
   late final Dio dio;
 
   Future<String> login({required String login, required String password}) async {
@@ -40,6 +41,7 @@ class ApiClient {
       };
     }
   }
+
   Future<T> genericGetRequest<T>(String path, {Map<String, dynamic>? queryParams}) async {
     var response = await dio.get(path, queryParameters: queryParams);
     if (response.statusCode == 200) {
@@ -50,7 +52,7 @@ class ApiClient {
   }
 
   Future<bool> postResetEmail(String email) async {
-    try{
+    try {
       var response = await dio.post(
         "/auth/reset-password/email",
         data: {
@@ -62,7 +64,7 @@ class ApiClient {
       } else {
         return false;
       }
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       throw Exception();
     }
@@ -88,10 +90,10 @@ class ApiClient {
   }
 
   Future<bool> postResetEmailCodeReset(
-      String email,
-      String code,
-      String password,
-      ) async {
+    String email,
+    String code,
+    String password,
+  ) async {
     try {
       var response = await dio.post(
         "/auth/reset-password/reset",
@@ -120,6 +122,4 @@ class ApiClient {
       throw Exception("Error in products");
     }
   }
-
-
 }

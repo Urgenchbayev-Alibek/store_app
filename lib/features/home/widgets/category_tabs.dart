@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/core/utils/colors.dart';
 
 class CategoryTabs extends StatelessWidget {
   const CategoryTabs({super.key});
@@ -16,6 +17,7 @@ class CategoryTabs extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 12),
             child: ChoiceChip(
+              backgroundColor: AppColors.onPrimary,
               label: Text(categories[index]),
               selected: index == 1,
               onSelected: (_) {},

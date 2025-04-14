@@ -9,4 +9,5 @@ class Routes {
   static const home = "/home";
   static const notification = '/notification';
   static const checkout = '/checkout';
+  static const myCart = "/my-cart";
 }

@@ -4,6 +4,7 @@ import '../../../data/models/product_model.dart';
 
 class ProductItem extends StatelessWidget {
   final ProductsModel product;
+
   const ProductItem({super.key, required this.product});
 
   @override
