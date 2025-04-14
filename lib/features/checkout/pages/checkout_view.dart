@@ -6,6 +6,7 @@ import 'package:store_app/features/common/store_app_bar.dart';
 import 'package:store_app/features/common/store_text_button.dart';
 
 import '../../../core/sizes.dart';
+import '../../common/store_text_item.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});
@@ -94,15 +95,80 @@ class CheckoutView extends StatelessWidget {
               const SizedBox(height: 20),
               const Text("Order Summary", style: TextStyle(fontFamily: "General Sans", fontSize: 16, fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
-              SummaryRow(
-                label: "Sub-total",
-                value: "\$ 5,870",
+              Column(
+                spacing: 20,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      StoreTextItem(
+                        text: "Sub-total",
+                        color: Colors.black.withValues(alpha: 0.45),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                      ),
+                      StoreTextItem(
+                        text: "\$ 5,870",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.sp,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      StoreTextItem(
+                        text: "Vat(%)",
+                        color: Colors.black.withValues(alpha: 0.45),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                      ),
+                      StoreTextItem(
+                        text: "\$ 0.00",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.sp,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      StoreTextItem(
+                        text: "Shipping fee",
+                        color: Colors.black.withValues(alpha: 0.45),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                      ),
+                      StoreTextItem(
+                        text: "\$ 80",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.sp,
+                      ),
+                    ],
+                  ),
+                  Divider(color: Colors.grey.withValues(alpha: 0.45)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      StoreTextItem(
+                        text: "Total",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                      ),
+                      StoreTextItem(
+                        text: "\$ 5,950",
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              SummaryRow(label: "VAT (%)", value: "\$ 0.00"),
-              SummaryRow(label: "Shipping fee", value: "\$ 80"),
-              SizedBox(height: 10),
-              Divider(color: AppColors.secondary.withValues(alpha: 0.5)),
-              SummaryRow(label: "Total", value: "\$ 5,950", isBold: true),
               const SizedBox(height: 20),
               Row(
                 children: [
@@ -181,28 +247,6 @@ class PaymentMethodButton extends StatelessWidget {
             Text(label, style: TextStyle(color: selected ? Colors.white : Colors.black)),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SummaryRow extends StatelessWidget {
-  final String label;
-  final String value;
-  final bool isBold;
-
-  const SummaryRow({super.key, required this.label, required this.value, this.isBold = false});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label, style: isBold ? const TextStyle(fontWeight: FontWeight.bold) : null),
-          Text(value, style: isBold ? const TextStyle(fontWeight: FontWeight.bold) : null),
-        ],
       ),
     );
   }

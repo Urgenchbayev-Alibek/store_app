@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 
 import '../../data/repositories/auth_repository.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
@@ -24,7 +25,7 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.checkout,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -40,7 +41,6 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
-
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(
@@ -107,6 +107,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.checkout,
       builder: (context, state) => CheckoutView(),
+    ),
+    GoRoute(
+      path: Routes.myCart,
+      builder: (context, state) => MyCartView(),
     ),
   ],
 );

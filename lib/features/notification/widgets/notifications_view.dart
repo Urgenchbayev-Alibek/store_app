@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class NotificationsPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: StoreBottomNavBar(),
     );
   }
 
@@ -81,19 +82,4 @@ class NotificationsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: 0,
-      type: BottomNavigationBarType.fixed,
-      selectedFontSize: 12,
-      unselectedFontSize: 12,
-      items:  [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Saved"),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "Cart"),
-        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "Account"),
-      ],
-    );
-  }
 }
