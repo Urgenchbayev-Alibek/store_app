@@ -6,6 +6,7 @@ import 'package:store_app/core/routing/router.dart';
 import 'package:store_app/core/utils/themes.dart';
 
 import 'core/dependencies.dart';
+import 'core/sizes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -26,6 +27,7 @@ class StoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (_, child) {

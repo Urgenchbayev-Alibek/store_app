@@ -6,7 +6,7 @@ import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://192.168.10.33:8888/api/v1'));
+    dio = Dio(BaseOptions(baseUrl: 'http://172.16.37.245:8888/api/v1'));
     dio.interceptors.add(AuthInterceptor());
   }
 

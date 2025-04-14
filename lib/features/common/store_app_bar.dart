@@ -23,6 +23,7 @@ class StoreAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       leadingWidth: showLeading ? 64 : 0,
       actionsPadding: const EdgeInsets.only(right: 15),
       leading: showLeading
