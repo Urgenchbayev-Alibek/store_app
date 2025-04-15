@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app/core/routing/router.dart';
 import 'package:store_app/core/utils/themes.dart';
-
 import 'core/dependencies.dart';
 import 'core/sizes.dart';
 

@@ -10,4 +10,5 @@ class Routes {
   static const notification = '/notification';
   static const checkout = '/checkout';
   static const myCart = "/my-cart";
+  static const newAddress = '/new-address';
 }
