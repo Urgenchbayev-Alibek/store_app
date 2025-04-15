@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
 
+import '../../search/pages/search_view.dart';
 import '../widgets/category_tabs.dart';
 import '../widgets/navigation_bar.dart';
 import '../widgets/products_grid.dart';
@@ -17,21 +18,33 @@ class HomeView extends StatelessWidget {
         centerTitle: false,
       ),
       body: ListView(
-        children: const [
+        children: [
           Padding(
-            padding: EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Search for clothes...",
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
+            padding: const EdgeInsets.all(16.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPageView(isEmpty: false),
+                  ),
+                );
+              },
+              child: const AbsorbPointer(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search for clothes...",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-          CategoryTabs(),
-          ProductGrid(),
+          const CategoryTabs(),
+          const ProductGrid(),
         ],
       ),
       bottomNavigationBar: const BottomNavBar(),

@@ -19,12 +19,13 @@ import '../../features/notification/widgets/notifications_page.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
+import '../../features/search/pages/search_view.dart';
 import '../../main.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.login,
+  initialLocation: Routes.search,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -40,7 +41,6 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
-
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(
@@ -100,7 +100,6 @@ final GoRouter router = GoRouter(
         child: HomeView(),
       ),
     ),
-
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
@@ -109,5 +108,10 @@ final GoRouter router = GoRouter(
       path: Routes.checkout,
       builder: (context, state) => CheckoutView(),
     ),
+    GoRoute(
+      path: Routes.search,
+      builder:  (context, state) => SearchPageView(isEmpty: false
+        ,)
+    )
   ],
 );
