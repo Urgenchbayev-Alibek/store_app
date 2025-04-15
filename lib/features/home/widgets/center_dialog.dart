@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../notification/widgets/empty_notifications_page.dart';
-import '../../notification/widgets/notifications_page.dart';
+import '../../notification/widgets/notifications_view.dart';
 
 class CenterDialog extends StatelessWidget {
   const CenterDialog({super.key});

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 
 import '../../data/repositories/auth_repository.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
@@ -15,7 +16,7 @@ import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
-import '../../features/notification/widgets/notifications_page.dart';
+import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
@@ -109,9 +110,13 @@ final GoRouter router = GoRouter(
       builder: (context, state) => CheckoutView(),
     ),
     GoRoute(
-      path: Routes.search,
-      builder:  (context, state) => SearchPageView(isEmpty: false
-        ,)
-    )
+        path: Routes.search,
+        builder:  (context, state) => SearchPageView(isEmpty: false
+          ,),
+    ),
+    GoRoute(
+      path: Routes.myCart,
+      builder: (context, state) => MyCartView(),
+    ),
   ],
 );

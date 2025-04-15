@@ -9,6 +9,7 @@ class Routes {
   static const home = "/home";
   static const notification = '/notification';
   static const checkout = '/checkout';
-  static const search = '/search';
+  static const myCart = "/my-cart";
 
+  static const search = '/search';
 }

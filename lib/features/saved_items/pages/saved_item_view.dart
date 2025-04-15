@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
 
 class SavedItemView extends StatelessWidget {
@@ -12,34 +13,7 @@ class SavedItemView extends StatelessWidget {
     return Scaffold(
       appBar: StoreAppBar(title: "Saved Items"),
       body: isEmpty ? _buildEmptyState() : _buildGrid(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/home.svg"),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/search.svg"),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/heart.svg"),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/cart.svg"),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/profile.svg"),
-            label: "",
-          ),
-        ],
-      ),
+      bottomNavigationBar: StoreBottomNavBar(),
     );
   }
 
