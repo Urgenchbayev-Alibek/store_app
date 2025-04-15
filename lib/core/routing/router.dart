@@ -6,23 +6,23 @@ import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
-import 'package:store_app/features/home/pages/home_view.dart';
 import 'package:store_app/main.dart';
-
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
 import '../../features/auth/forgot_password/pages/reset_password_view.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
+import '../../features/my_card/pages/my_card_view_v2.dart';
 import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/notification/widgets/notifications_page.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
+import '../../features/product_detail/pages/reviews_page.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.home,
+  initialLocation: Routes.productDetail,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -38,7 +38,6 @@ final GoRouter router = GoRouter(
       path: Routes.onboarding,
       builder: (context, state) => OnboardingView(),
     ),
-
     GoRoute(
       path: Routes.login,
       builder: (context, state) => BlocProvider(
@@ -66,12 +65,21 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
     GoRoute(
-      path: Routes.notification,
+      path: Routes.notificationEmpty,
       builder: (context, state) => EmptyNotificationsPage(),
     ),
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
     ),
+    GoRoute(
+      path: Routes.myCard,
+      builder: (context, state) => MyCardView(),
+    ),
+    GoRoute(
+      path: Routes.productDetail,
+      builder: (context, state) => ReviewsPage(),
+    ),
+
   ],
 );
