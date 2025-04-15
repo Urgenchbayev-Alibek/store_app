@@ -5,6 +5,8 @@ import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 
 import '../../data/repositories/auth_repository.dart';
+import '../../features/address/managers/new_address_bloc.dart';
+import '../../features/address/pages/new_address_view.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
@@ -25,7 +27,7 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.login,
+  initialLocation: Routes.signUp,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -43,29 +45,34 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.login,
-      builder: (context, state) => BlocProvider(
-        create: (context) => LoginBloc(
-          authRepository: AuthRepository(client: ApiClient()),
-        ),
-        child: LoginView(),
-      ),
+      builder: (context, state) =>
+          BlocProvider(
+            create: (context) =>
+                LoginBloc(
+                  authRepository: AuthRepository(client: ApiClient()),
+                ),
+            child: LoginView(),
+          ),
     ),
     GoRoute(
       path: Routes.signUp,
-      builder: (context, state) => BlocProvider(
-        create: (context) => SignUpBloc(
-          authRepo: AuthRepository(client: ApiClient()),
-        ),
-        child: SignUpView(),
-      ),
+      builder: (context, state) =>
+          BlocProvider(
+            create: (context) =>
+                SignUpBloc(
+                  authRepo: AuthRepository(client: ApiClient()),
+                ),
+            child: SignUpView(),
+          ),
     ),
     GoRoute(
       path: Routes.forgotPassword,
       builder: (context, state) {
         return BlocProvider(
-          create: (context) => ResetPasswordBloc(
-            authRepository: context.read<AuthRepository>(),
-          ),
+          create: (context) =>
+              ResetPasswordBloc(
+                authRepository: context.read<AuthRepository>(),
+              ),
           child: const ForgotPasswordView(),
         );
       },
@@ -93,12 +100,14 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => BlocProvider(
-        create: (context) => HomeBloc(
-          repo: context.read(),
-        ),
-        child: HomeView(),
-      ),
+      builder: (context, state) =>
+          BlocProvider(
+            create: (context) =>
+                HomeBloc(
+                  repo: context.read(),
+                ),
+            child: HomeView(),
+          ),
     ),
     GoRoute(
       path: Routes.notification,
@@ -111,6 +120,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.myCart,
       builder: (context, state) => MyCartView(),
+    ),
+    GoRoute(
+      path: Routes.newAddress,
+      builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
     ),
   ],
 );
