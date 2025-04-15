@@ -149,13 +149,5 @@ final GoRouter router = GoRouter(
       path: Routes.myCart,
       builder: (context, state) => MyCartView(),
     ),
-    GoRoute(
-      path: Routes.newAddress,
-      builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
-    ),
-    GoRoute(
-      path: Routes.paymentMethod,
-      builder: (context, state) => PaymentMethodView(),
-    ),
   ],
 );
