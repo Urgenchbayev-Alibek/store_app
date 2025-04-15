@@ -15,4 +15,6 @@ class Routes {
   static const reviews = '/reviews';
   static const checkout = '/checkout';
   static const myCart = "/my-cart";
+  static const newAddress = '/new-address';
+
 }
