@@ -12,4 +12,6 @@ class Routes {
   static const myCart = "/my-cart";
 
   static const search = '/search';
+
+  static const paymentMethod = '/payment-method';
 }

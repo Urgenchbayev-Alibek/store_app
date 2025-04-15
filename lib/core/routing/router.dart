@@ -20,13 +20,14 @@ import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
+import '../../features/payment_method/pages/payment_method_view.dart';
 import '../../features/search/pages/search_view.dart';
 import '../../main.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.search,
+  initialLocation: Routes.paymentMethod,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -117,6 +118,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.myCart,
       builder: (context, state) => MyCartView(),
+    ),
+    GoRoute(
+      path: Routes.paymentMethod,
+      builder: (context, state) => PaymentMethodView(),
     ),
   ],
 );
