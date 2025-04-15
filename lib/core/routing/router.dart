@@ -6,6 +6,7 @@ import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
+import 'package:store_app/features/product_detail/pages/product_details_page.dart';
 import 'package:store_app/main.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
@@ -93,10 +94,11 @@ final GoRouter router = GoRouter(
         return ResetPasswordView(email: email, code: code);
       },
     ),
-    GoRoute(path: Routes.resetPassword, builder: (context, state) => ResetPasswordView()),
     GoRoute(
       path: Routes.notificationEmpty,
       builder: (context, state) => EmptyNotificationsPage(),
+    ),
+    GoRoute(
       path: Routes.home,
       builder: (context, state) => BlocProvider(
         create: (context) => HomeBloc(
@@ -109,17 +111,15 @@ final GoRouter router = GoRouter(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
     ),
-
-
     GoRoute(
       path: Routes.myCard,
       builder: (context, state) => MyCardView(),
     ),
     GoRoute(
       path: Routes.productDetail,
-      builder: (context, state) => ReviewsPage(),
+      builder: (context, state) => ProductDetailsPage(),
     ),
-
+    GoRoute(path: Routes.reviews, builder: (context, state) => ReviewsPage()),
     GoRoute(
       path: Routes.checkout,
       builder: (context, state) => CheckoutView(),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/core/sizes.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key});
+ const ProductDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +25,13 @@ class ProductDetailsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.padding25),
             child: Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.asset(
-                    'assets/images/Container.png',
+                    'assets/images/t-shirt.png',
                     width: 341,// double.infinity
                     height: 368,
                     fit: BoxFit.cover,
@@ -119,8 +120,6 @@ class ProductDetailsPage extends StatelessWidget {
           ),
 
           Spacer(),
-
-          // Narx va Add to Cart tugmasi
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(

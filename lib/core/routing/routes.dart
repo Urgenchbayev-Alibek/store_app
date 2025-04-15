@@ -12,7 +12,7 @@ class Routes {
   static const myCard = '/my-card';
   static const search = '/search';
   static const productDetail = '/product-details';
-
+  static const reviews = '/reviews';
   static const checkout = '/checkout';
   static const myCart = "/my-cart";
 }
