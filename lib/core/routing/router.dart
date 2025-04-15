@@ -8,8 +8,6 @@ import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 
 import '../../data/repositories/auth_repository.dart';
-import '../../features/address/managers/new_address_bloc.dart';
-import '../../features/address/pages/new_address_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
 import 'package:store_app/main.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
