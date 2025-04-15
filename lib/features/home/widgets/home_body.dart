@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class DiscoverItems extends StatelessWidget {
   final List<String> imagePaths = [
-    'assets/images/Container.png',
-    'assets/images/Container (1).png',
-    'assets/images/Container (2).png',
-    'assets/images/Container (3).png',
-    'assets/images/Container (1).png',
-    'assets/images/Container (2).png',
-    'assets/images/Container (3).png',
-    'assets/images/Container.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
+    'assets/images/t-shirt.png',
   ];
 
   final List<String> titles = [

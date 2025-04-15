@@ -77,6 +77,18 @@ flutter:
     - assets/icons/
     - assets/images/
 
+  fonts:
+    - family: General Sans
+      fonts:
+        - asset: assets/fonts/GeneralSans/GeneralSans-Regular.otf
+          style: normal
+          weight: 400
+        - asset: assets/fonts/GeneralSans/GeneralSans-Medium.otf
+          weight: 500
+        - asset: assets/fonts/GeneralSans/GeneralSans-SemiBold.otf
+          weight: 600
+
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

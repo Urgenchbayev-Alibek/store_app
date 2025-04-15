@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:store_app/features/common/bottom_nav_bar.dart';
+import 'package:store_app/features/common/store_app_bar.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -6,17 +9,9 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text("Notifications"),
-        leading:  BackButton(),
-        actions:  [
-          Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.notifications_none),
-          )
-        ],
-      ),
+      appBar: StoreAppBar(title: "Notifications"),
       body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 25.w,),
         children: [
           _buildSectionTitle("Today"),
           _buildNotificationTile(
@@ -49,7 +44,7 @@ class NotificationsPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: StoreBottomNavBar(),
     );
   }
 
@@ -87,19 +82,4 @@ class NotificationsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: 0,
-      type: BottomNavigationBarType.fixed,
-      selectedFontSize: 12,
-      unselectedFontSize: 12,
-      items:  [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Saved"),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "Cart"),
-        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "Account"),
-      ],
-    );
-  }
 }

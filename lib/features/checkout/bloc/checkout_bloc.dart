@@ -1,13 +1,29 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-
-part 'checkout_event.dart';
-part 'checkout_state.dart';
-
-class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
-  CheckoutBloc() : super(CheckoutInitial()) {
-    on<CheckoutEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-  }
-}
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'checkout_event.dart';
+// import 'checkout_state.dart';
+//
+// class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
+//   final CheckoutRepository repository;
+//
+//   CheckoutBloc(this.repository) : super(CheckoutInitial()) {
+//     on<LoadCheckoutEvent>((event, emit) async {
+//       emit(CheckoutLoading());
+//       try {
+//         final model = await repository.getCheckoutDetails();
+//         emit(CheckoutLoaded(model));
+//       } catch (e) {
+//         emit(CheckoutFailure("Failed to load checkout details"));
+//       }
+//     });
+//
+//     on<PlaceOrderEvent>((event, emit) async {
+//       emit(CheckoutPlacingOrder());
+//       try {
+//         await repository.submitOrder();
+//         emit(CheckoutSuccess());
+//       } catch (e) {
+//         emit(CheckoutFailure("Failed to place order"));
+//       }
+//     });
+//   }
+// }
