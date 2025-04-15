@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/empty_view.dart';
-
 import '../../../core/utils/colors.dart';
 import '../../common/store_app_bar.dart';
 import '../widgets/my_cart_items.dart';

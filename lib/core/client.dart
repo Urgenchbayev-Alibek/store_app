@@ -89,11 +89,9 @@ class ApiClient {
     }
   }
 
-  Future<bool> postResetEmailCodeReset(
-    String email,
-    String code,
-    String password,
-  ) async {
+  Future<bool> postResetEmailCodeReset(String email,
+      String code,
+      String password,) async {
     try {
       var response = await dio.post(
         "/auth/reset-password/reset",
