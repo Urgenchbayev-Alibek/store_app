@@ -106,7 +106,7 @@ class MyCartItems extends StatelessWidget {
                 ],
               ),
               StoreTextButton(
-                showArrow: true,
+                showArrow: false,
                 text: "Go To CheckOut",
                 callback: () {
                   context.push(Routes.checkout);

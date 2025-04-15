@@ -2,11 +2,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/data/repositories/auth_repository.dart';
+import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
+import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 
 import '../../data/repositories/auth_repository.dart';
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/new_address_view.dart';
+import 'package:store_app/features/product_detail/pages/product_details_page.dart';
+import 'package:store_app/main.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
@@ -18,11 +23,13 @@ import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
+import '../../features/my_card/pages/my_card_view_v2.dart';
+import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
-import '../../main.dart';
+import '../../features/product_detail/pages/reviews_page.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
@@ -99,6 +106,10 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: Routes.notificationEmpty,
+      builder: (context, state) => EmptyNotificationsPage(),
+    ),
+    GoRoute(
       path: Routes.home,
       builder: (context, state) =>
           BlocProvider(
@@ -113,6 +124,15 @@ final GoRouter router = GoRouter(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
     ),
+    GoRoute(
+      path: Routes.myCard,
+      builder: (context, state) => MyCardView(),
+    ),
+    GoRoute(
+      path: Routes.productDetail,
+      builder: (context, state) => ProductDetailsPage(),
+    ),
+    GoRoute(path: Routes.reviews, builder: (context, state) => ReviewsPage()),
     GoRoute(
       path: Routes.checkout,
       builder: (context, state) => CheckoutView(),
