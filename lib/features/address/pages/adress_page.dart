@@ -22,6 +22,7 @@ class _AddressPageState extends State<AddressPage> {
       "label": "Office",
       "address": "2438 6th Ave, Ketchikan, Alaska"
     },
+
     {
       "label": "Apartment",
       "address": "2551 Vista Dr #B301, Juneau, Alaska"
