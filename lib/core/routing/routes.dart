@@ -16,5 +16,6 @@ class Routes {
   static const checkout = '/checkout';
   static const myCart = "/my-cart";
   static const newAddress = '/new-address';
+  static const addressPage = '/address-page';
 
 }

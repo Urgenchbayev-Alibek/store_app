@@ -52,12 +52,10 @@ class NewAddressView extends StatelessWidget {
                           (tapPosition, point) =>
                               context.read<NewAddressBloc>().add(NewAddressChooseLocation(chosenLocation: point)),
                     ),
-                    children: [
-                      TileLayer(
-                        urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                        subdomains: ['a', 'b', 'c'],
-                        userAgentPackageName: 'com.example.app',
-                      ),
+                    children: [TileLayer(
+                      urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png", // Subdomainsiz
+                      userAgentPackageName: 'com.example.app',
+                    ),
                       MarkerLayer(markers: state.markers),
                     ],
                   ),
