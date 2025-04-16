@@ -6,30 +6,28 @@ import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
+import 'package:store_app/features/product_detail/pages/product_details_page.dart';
+import 'package:store_app/features/profile/pages/profile_view.dart';
+import 'package:store_app/main.dart';
 
-import '../../data/repositories/auth_repository.dart';
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/new_address_view.dart';
-import 'package:store_app/features/product_detail/pages/product_details_page.dart';
-import 'package:store_app/main.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
 import '../../features/auth/forgot_password/pages/reset_password_view.dart';
 import '../../features/auth/login/bloc/login_bloc.dart';
 import '../../features/auth/login/pages/login_view.dart';
-import '../../features/auth/sign_up/bloc/sign_up_bloc.dart';
-import '../../features/auth/sign_up/pages/sing_up_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
-import '../../features/my_card/pages/my_card_view_v2.dart';
 import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 import '../../features/product_detail/pages/reviews_page.dart';
+import '../../features/saved_items/pages/saved_item_view.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
@@ -52,34 +50,29 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.login,
-      builder: (context, state) =>
-          BlocProvider(
-            create: (context) =>
-                LoginBloc(
-                  authRepository: AuthRepository(client: ApiClient()),
-                ),
-            child: LoginView(),
-          ),
+      builder: (context, state) => BlocProvider(
+        create: (context) => LoginBloc(
+          authRepository: AuthRepository(client: ApiClient()),
+        ),
+        child: LoginView(),
+      ),
     ),
     GoRoute(
       path: Routes.signUp,
-      builder: (context, state) =>
-          BlocProvider(
-            create: (context) =>
-                SignUpBloc(
-                  authRepo: AuthRepository(client: ApiClient()),
-                ),
-            child: SignUpView(),
-          ),
+      builder: (context, state) => BlocProvider(
+        create: (context) => SignUpBloc(
+          authRepo: AuthRepository(client: ApiClient()),
+        ),
+        child: SignUpView(),
+      ),
     ),
     GoRoute(
       path: Routes.forgotPassword,
       builder: (context, state) {
         return BlocProvider(
-          create: (context) =>
-              ResetPasswordBloc(
-                authRepository: context.read<AuthRepository>(),
-              ),
+          create: (context) => ResetPasswordBloc(
+            authRepository: context.read<AuthRepository>(),
+          ),
           child: const ForgotPasswordView(),
         );
       },
@@ -111,22 +104,16 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) =>
-          BlocProvider(
-            create: (context) =>
-                HomeBloc(
-                  repo: context.read(),
-                ),
-            child: HomeView(),
-          ),
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeBloc(
+          repo: context.read(),
+        ),
+        child: HomeView(),
+      ),
     ),
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => NotificationsPage(),
-    ),
-    GoRoute(
-      path: Routes.myCard,
-      builder: (context, state) => MyCardView(),
     ),
     GoRoute(
       path: Routes.productDetail,
@@ -145,5 +132,13 @@ final GoRouter router = GoRouter(
       path: Routes.newAddress,
       builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
     ),
+    GoRoute(
+      path: Routes.saved,
+      builder: (context, state) => SavedItemView(),
+    ),
+    GoRoute(
+      path: Routes.account,
+      builder: (context, state) => ProfileView(),
+    )
   ],
 );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
+
+import '../../../core/routing/routes.dart';
 
 class SavedItemView extends StatelessWidget {
   const SavedItemView({super.key});
@@ -11,9 +14,32 @@ class SavedItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StoreAppBar(title: "Saved Items"),
-      body: isEmpty ? _buildEmptyState() : _buildGrid(),
-      bottomNavigationBar: StoreBottomNavBar(),
+        appBar: StoreAppBar(title: "Saved Items"),
+        body: isEmpty ? _buildEmptyState() : _buildGrid(),
+        bottomNavigationBar: StoreBottomNavigationBar(
+          selectedIndex: 2,
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                context.push(Routes.home);
+                break;
+              case 1:
+                context.push(Routes.search);
+                break;
+              case 2:
+                context.push(Routes.saved);
+                break;
+              case 3:
+                context.push(Routes.myCart);
+                break;
+              case 4:
+                context.push(Routes.account);
+                break;
+              default:
+                break;
+            }
+          },
+        ),
     );
   }
 
