@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/empty_view.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/utils/colors.dart';
 import '../../common/store_app_bar.dart';
 import '../widgets/my_cart_items.dart';
@@ -34,7 +36,30 @@ class _MyCartViewState extends State<MyCartView> {
                 ),
         ],
       ),
-      bottomNavigationBar: StoreBottomNavBar(),
+      bottomNavigationBar: StoreBottomNavigationBar(
+        selectedIndex: 3,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              context.push(Routes.home);
+              break;
+            case 1:
+              context.push(Routes.search);
+              break;
+            case 2:
+              context.push(Routes.saved);
+              break;
+            case 3:
+              context.push(Routes.myCart);
+              break;
+            case 4:
+              context.push(Routes.account);
+              break;
+            default:
+              break;
+          }
+        },
+      ),
     );
   }
 }

@@ -1,82 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
-import 'package:store_app/features/saved_items/pages/saved_item_view.dart';
-import '../home/pages/home_view.dart';
-import '../profile/pages/profile_view.dart';
+import 'bottom_icon_button.dart';
 
-class StoreBottomNavBar extends StatefulWidget {
-  const StoreBottomNavBar({super.key});
+class StoreBottomNavigationBar extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int> onTap;
 
-  @override
-  State<StoreBottomNavBar> createState() => _StoreBottomNavBarState();
-}
-
-class _StoreBottomNavBarState extends State<StoreBottomNavBar> {
-  int _selectedIndex = 0;
-  final List<Widget> _pages = const [
-    HomeView(),
-    SearchViewV2(),
-    SavedItemView(),
-    MyCartView(),
-    ProfileView(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  const StoreBottomNavigationBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/home.svg",
-              color: _selectedIndex == 0 ? Colors.black : Colors.grey,
-            ),
-            label: "Home",
+    return Container(
+      width: double.infinity,
+      height: 86,
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: Colors.grey,
+            width: 1,
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/search.svg",
-              color: _selectedIndex == 1 ? Colors.black : Colors.grey,
+        ),
+        color: Colors.white,
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            BottomNavigationIconButton(
+              callback: () => onTap(0),
+              svg: "assets/icons/home.svg",
+              iconColor: selectedIndex == 0 ? Colors.black : Colors.grey,
+              title: "Home",
+              titleColor: selectedIndex == 0 ? Colors.black : Colors.grey,
             ),
-            label: "Search",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/heart.svg",
-              color: _selectedIndex == 2 ? Colors.black : Colors.grey,
+            BottomNavigationIconButton(
+              callback: () => onTap(1),
+              svg: "assets/icons/search.svg",
+              iconColor: selectedIndex == 1 ? Colors.black : Colors.grey,
+              title: "Search",
+              titleColor: selectedIndex == 1 ? Colors.black : Colors.grey,
             ),
-            label: "Saved",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/cart.svg",
-              color: _selectedIndex == 3 ? Colors.black : Colors.grey,
+            BottomNavigationIconButton(
+              callback: () => onTap(2),
+              svg: "assets/icons/saved.svg",
+              iconColor: selectedIndex == 2 ? Colors.black : Colors.grey,
+              title: "Saved",
+              titleColor: selectedIndex == 2 ? Colors.black : Colors.grey,
             ),
-            label: "Cart",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/icons/profile.svg",
-              color: _selectedIndex == 4 ? Colors.black : Colors.grey,
+            BottomNavigationIconButton(
+              callback: () => onTap(3),
+              svg: "assets/icons/cart.svg",
+              iconColor: selectedIndex == 3 ? Colors.black : Colors.grey,
+              title: "Cart",
+              titleColor: selectedIndex == 3 ? Colors.black : Colors.grey,
             ),
-            label: "Account",
-          ),
-        ],
+            BottomNavigationIconButton(
+              callback: () => onTap(4),
+              svg: "assets/icons/account.svg",
+              iconColor: selectedIndex == 4 ? Colors.black : Colors.grey,
+              title: "Account",
+              titleColor: selectedIndex == 4 ? Colors.black : Colors.grey,
+            ),
+          ],
+        ),
       ),
     );
   }
