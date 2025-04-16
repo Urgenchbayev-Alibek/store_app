@@ -7,10 +7,13 @@ import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
+
 import 'package:store_app/features/profile/pages/profile_view.dart';
+
 import 'package:store_app/main.dart';
 
 import '../../features/address/managers/new_address_bloc.dart';
+import '../../features/address/pages/adress_page.dart';
 import '../../features/address/pages/new_address_view.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
@@ -32,7 +35,9 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
+
   initialLocation: Routes.home,
+
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -132,6 +137,7 @@ final GoRouter router = GoRouter(
       path: Routes.newAddress,
       builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
     ),
+
     GoRoute(
       path: Routes.saved,
       builder: (context, state) => SavedItemView(),
@@ -140,5 +146,8 @@ final GoRouter router = GoRouter(
       path: Routes.account,
       builder: (context, state) => ProfileView(),
     )
+
+    GoRoute(path: Routes.addressPage, builder: (context, state) => AddressPage(),)
+
   ],
 );
