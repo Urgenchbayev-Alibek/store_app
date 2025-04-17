@@ -56,7 +56,7 @@ class _PaymentMethodViewState extends State<PaymentMethodView> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const NewCardView()),
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>  NewCardView()),
                 );
               },
               child: Container(

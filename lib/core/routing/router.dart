@@ -12,7 +12,6 @@ import 'package:store_app/features/profile/pages/profile_view.dart';
 
 import 'package:store_app/main.dart';
 
-
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/adress_page.dart';
 import '../../features/address/pages/new_address_view.dart';
@@ -31,6 +30,7 @@ import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 import '../../features/payment_method/pages/new_card.dart';
+import '../../features/payment_method/pages/payment_method_view.dart';
 import '../../features/product_detail/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
 import '../../features/search/pages/search_view.dart';
@@ -38,9 +38,7 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-
-  initialLocation: Routes.home,
-
+  initialLocation: Routes.newCard,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -160,14 +158,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.account,
       builder: (context, state) => ProfileView(),
-    )
-
-    GoRoute(path: Routes.addressPage, builder: (context, state) => AddressPage(),)
-
+    ),
+    GoRoute(
+      path: Routes.addressPage,
+      builder: (context, state) => AddressPage(),
+    ),
     GoRoute(
       path: Routes.newCard,
-      builder: (context, state) => const NewCardView(),
+      builder: (context, state) => NewCardView(),
     )
-
   ],
 );

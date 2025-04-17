@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
+import 'package:store_app/features/onboarding/widgets/onboarding_bottom_nav_bar.dart';
+
+import '../../../core/routing/routes.dart';
+import '../../common/store_text_button.dart';
 
 class NewCardView extends StatefulWidget {
   NewCardView({super.key});
@@ -24,21 +33,18 @@ class _NewCardViewState extends State<NewCardView> {
     return Scaffold(
       appBar: StoreAppBar(
         title: "New Card",
-        bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(25),
-          child: Divider(
-            color: Color(0xffE6E6E6),
-            thickness: 2,
-          ),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 20),
         child: Form(
+
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Divider(thickness: 0.5, indent: 24, endIndent: 24),
+              SizedBox(height: 5),
+
               const Text(
                 "Add Debit or Credit Card",
                 style: TextStyle(
@@ -214,11 +220,27 @@ class _NewCardViewState extends State<NewCardView> {
                 ],
               ),
               Expanded(child: SizedBox()),
-
             ],
           ),
         ),
       ),
+      bottomNavigationBar:Container(
+        width: double.infinity,
+        height: 107.h,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border(
+            top: BorderSide(color: Theme.of(context).colorScheme.secondary),
+          ),
+        ),
+        child: StoreTextButton(
+          text: "Apply",
+          width: 341.w,
+          height: 54.h,
+          showArrow: true,
+          callback: () {},
+        ),
+      )
     );
   }
 }
