@@ -9,6 +9,7 @@ class Routes {
   static const home = "/home";
   static const notification = '/notification';
   static const notificationEmpty = '/notification-empty';
+  static const myCard = '/my-card';
   static const search = '/search';
   static const productDetail = '/product-details';
   static const reviews = '/reviews';
@@ -21,4 +22,6 @@ class Routes {
 
   static const account = '/account';
 
+  static const paymentMethod = '/payment-method';
+  static const newCard = '/new-card';
 }

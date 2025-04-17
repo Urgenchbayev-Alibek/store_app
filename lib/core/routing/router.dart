@@ -29,15 +29,16 @@ import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
 import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
+import '../../features/payment_method/pages/new_card.dart';
+import '../../features/payment_method/pages/payment_method_view.dart';
 import '../../features/product_detail/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
+import '../../features/search/pages/search_view.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-
-  initialLocation: Routes.home,
-
+  initialLocation: Routes.newCard,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -124,10 +125,19 @@ final GoRouter router = GoRouter(
       path: Routes.productDetail,
       builder: (context, state) => ProductDetailsPage(),
     ),
-    GoRoute(path: Routes.reviews, builder: (context, state) => ReviewsPage()),
+    GoRoute(
+      path: Routes.reviews,
+      builder: (context, state) => ReviewsPage(),
+    ),
     GoRoute(
       path: Routes.checkout,
       builder: (context, state) => CheckoutView(),
+    ),
+    GoRoute(
+      path: Routes.search,
+      builder: (context, state) => SearchPageView(
+        isEmpty: false,
+      ),
     ),
     GoRoute(
       path: Routes.myCart,
@@ -137,7 +147,10 @@ final GoRouter router = GoRouter(
       path: Routes.newAddress,
       builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
     ),
-
+    GoRoute(
+      path: Routes.paymentMethod,
+      builder: (context, state) => PaymentMethodView(),
+    ),
     GoRoute(
       path: Routes.saved,
       builder: (context, state) => SavedItemView(),
@@ -145,9 +158,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.account,
       builder: (context, state) => ProfileView(),
+    ),
+    GoRoute(
+      path: Routes.addressPage,
+      builder: (context, state) => AddressPage(),
+    ),
+    GoRoute(
+      path: Routes.newCard,
+      builder: (context, state) => NewCardView(),
     )
-
-    GoRoute(path: Routes.addressPage, builder: (context, state) => AddressPage(),)
-
   ],
 );
