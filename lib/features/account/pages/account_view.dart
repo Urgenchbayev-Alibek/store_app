@@ -41,8 +41,8 @@ class AccountView extends StatelessWidget {
           AccountViewItem(
             icon: "assets/icons/card.svg",
             text: "Payment Methods",
-            onTap: () => context.push(""),
-              // Routes.paymentMethods
+            onTap: () => context.push(Routes.paymentMethod),
+            // Routes.paymentMethods
           ),
           AccountViewItem(
             icon: "assets/icons/notification.svg",
