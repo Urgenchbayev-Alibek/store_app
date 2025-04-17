@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/core/sizes.dart';
-import 'package:store_app/core/utils/colors.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
-
 import '../../../core/routing/routes.dart';
 import '../../common/bottom_nav_bar.dart';
 import '../widgets/acoount_view_item.dart';
