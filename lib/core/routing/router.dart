@@ -6,10 +6,16 @@ import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
-import 'package:store_app/features/payment_method/pages/payment_method_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
+
+import 'package:store_app/features/profile/pages/profile_view.dart';
+
 import 'package:store_app/main.dart';
 
+
+import '../../features/address/managers/new_address_bloc.dart';
+import '../../features/address/pages/adress_page.dart';
+import '../../features/address/pages/new_address_view.dart';
 import '../../features/auth/forgot_password/bloc/reset_bloc.dart';
 import '../../features/auth/forgot_password/pages/enter_otp_view.dart';
 import '../../features/auth/forgot_password/pages/forgot_password_view.dart';
@@ -19,7 +25,6 @@ import '../../features/auth/login/pages/login_view.dart';
 import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
-import '../../features/my_card/pages/my_card_view_v2.dart';
 import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
@@ -27,12 +32,15 @@ import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 import '../../features/payment_method/pages/new_card.dart';
 import '../../features/product_detail/pages/reviews_page.dart';
+import '../../features/saved_items/pages/saved_item_view.dart';
 import '../../features/search/pages/search_view.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.paymentMethod,
+
+  initialLocation: Routes.home,
+
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -116,10 +124,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => NotificationsPage(),
     ),
     GoRoute(
-      path: Routes.myCard,
-      builder: (context, state) => MyCardView(),
-    ),
-    GoRoute(
       path: Routes.productDetail,
       builder: (context, state) => ProductDetailsPage(),
     ),
@@ -142,9 +146,24 @@ final GoRouter router = GoRouter(
       builder: (context, state) => MyCartView(),
     ),
     GoRoute(
+      path: Routes.newAddress,
+      builder: (context, state) => BlocProvider(create: (context) => NewAddressBloc(), child: NewAddressView()),
+    ),
+    GoRoute(
       path: Routes.paymentMethod,
       builder: (context, state) => PaymentMethodView(),
     ),
+    GoRoute(
+      path: Routes.saved,
+      builder: (context, state) => SavedItemView(),
+    ),
+    GoRoute(
+      path: Routes.account,
+      builder: (context, state) => ProfileView(),
+    )
+
+    GoRoute(path: Routes.addressPage, builder: (context, state) => AddressPage(),)
+
     GoRoute(
       path: Routes.newCard,
       builder: (context, state) => const NewCardView(),
