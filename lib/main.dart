@@ -39,4 +39,3 @@ class StoreApp extends StatelessWidget {
     );
   }
 }
-

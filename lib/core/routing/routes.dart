@@ -17,11 +17,12 @@ class Routes {
   static const myCart = "/my-cart";
   static const newAddress = '/new-address';
   static const addressPage = '/address-page';
-
   static const saved='/saved';
-
   static const account = '/account';
-
+  static const myOrders = '/my-orders';
+  static const faqs = "/faqs";
+  static const helpCenter = "/help-center";
+  static const myDetails ='/my-details';
   static const paymentMethod = '/payment-method';
   static const newCard = '/new-card';
 }
