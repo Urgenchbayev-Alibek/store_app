@@ -40,7 +40,7 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.newCard,
+  initialLocation: Routes.myDetails,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
