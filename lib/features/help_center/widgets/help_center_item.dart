@@ -21,7 +21,7 @@ class HelpCenterItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.45),
           ),
         ),
         child: Row(
@@ -31,6 +31,7 @@ class HelpCenterItem extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
+                fontWeight: FontWeight.w500,
                 color: AppColors.primary,
                 fontFamily: "General Sans",
                 fontSize: 16,

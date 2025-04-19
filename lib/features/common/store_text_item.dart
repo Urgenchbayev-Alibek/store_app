@@ -20,6 +20,7 @@ class StoreTextItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      textAlign: TextAlign.start,
       text,
       maxLines: line,
       overflow: TextOverflow.ellipsis,

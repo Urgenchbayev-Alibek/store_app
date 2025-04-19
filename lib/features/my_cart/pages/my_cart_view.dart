@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/empty_view.dart';
@@ -21,11 +22,11 @@ class _MyCartViewState extends State<MyCartView> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: StoreAppBar(title: "My Cart"),
+      appBar: StoreAppBar(title: "My Cart", bottom: null,),
       backgroundColor: AppColors.onPrimary,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: 20.h),
           isNotEmpty == true
               ? MyCartItems()
               : EmptyView(
