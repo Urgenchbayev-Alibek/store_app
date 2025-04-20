@@ -228,7 +228,7 @@ class _FAQItemState extends State<_FAQItem> {
             padding: const EdgeInsets.all(16),
             child: Text(
               widget.answer,
-              style: const TextStyle(color: Colors.black87, height: 1.4),
+              style: const TextStyle(color: Colors.black87, height: 1.4 ),
             ),
           )
         ],
