@@ -5,7 +5,7 @@ import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/data/repositories/auth_repository.dart';
 import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
-import 'package:store_app/features/faqs/pages/faqs_view.dart';
+import 'package:store_app/features/f_a_q/pages/f_a_q_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
 import 'package:store_app/features/my_details/pages/my_details_view1.dart';
 import 'package:store_app/features/my_orders/pages/my_orders_view.dart';
@@ -40,7 +40,7 @@ import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.newCard,
+  initialLocation: Routes.FAQs,
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -170,10 +170,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => MyOrdersView(),
     ),
     GoRoute(
-      path: Routes.faqs,
-      builder: (context, state) => FAQsView(),
-    ),
-    GoRoute(
       path: Routes.helpCenter,
       builder: (context, state) => HelpCenterView(),
     ),
@@ -184,6 +180,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.newCard,
       builder: (context, state) => NewCardView(),
-    )
+    ),
+    GoRoute(
+      path: Routes.FAQs,
+      builder: (context, state) => FAQPageView(),
+    ),
   ],
 );
