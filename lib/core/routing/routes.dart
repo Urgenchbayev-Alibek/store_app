@@ -1,3 +1,5 @@
+
+
 class Routes {
   static const splashScreen = '/splash';
   static const onboarding = '/onboarding';
@@ -25,4 +27,5 @@ class Routes {
   static const myDetails ='/my-details';
   static const paymentMethod = '/payment-method';
   static const newCard = '/new-card';
+  static const FAQs = '/FAQs';
 }
