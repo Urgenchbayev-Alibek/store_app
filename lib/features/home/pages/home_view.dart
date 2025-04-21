@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
-import '../../search/pages/search_view.dart';
 import '../../../core/routing/routes.dart';
 import '../widgets/category_tabs.dart';
 import '../widgets/products_grid.dart';

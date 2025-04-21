@@ -11,14 +11,23 @@ class StoreAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.showLeading = true,
     this.centerTitle = true,
+    this.toolbarHeight=56,
+    this.bottom,
   });
 
   final String title;
   final bool showLeading;
   final bool centerTitle;
+  final double toolbarHeight;
+  final PreferredSizeWidget? bottom;
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize {
+    final double? bottomHeight = bottom?.preferredSize.height;
+    final height =
+    bottomHeight == null ? toolbarHeight : bottomHeight + toolbarHeight;
+    return Size(double.infinity, height);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +69,7 @@ class StoreAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ],
+      bottom: bottom ?? null,
     );
   }
 }
