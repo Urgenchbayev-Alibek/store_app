@@ -169,10 +169,10 @@ final GoRouter router = GoRouter(
       path: Routes.myOrders,
       builder: (context, state) => MyOrdersView(),
     ),
-    GoRoute(
-      path: Routes.faqs,
-      builder: (context, state) => FAQsView(),
-    ),
+    // GoRoute(
+    //   path: Routes.faqs,
+    //   builder: (context, state) => FAQsView(),
+    // ),
     GoRoute(
       path: Routes.helpCenter,
       builder: (context, state) => HelpCenterView(),
