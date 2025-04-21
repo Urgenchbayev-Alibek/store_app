@@ -6,7 +6,7 @@ import 'exceptions/auth_exception.dart';
 
 class ApiClient {
   ApiClient() {
-    dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));
+    dio = Dio(BaseOptions(baseUrl: 'http://192.168.11.140:8888/api/v1'));
     dio.interceptors.add(AuthInterceptor());
   }
 
@@ -118,6 +118,22 @@ class ApiClient {
       return data;
     } else {
       throw Exception("Error in products");
+    }
+  }
+
+  Future<bool> fetchAuthUpdate(model) async {
+    try {
+      final response = await dio.patch(
+        "/auth/update",
+        data: model.toJson(),
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
     }
   }
 }
