@@ -3,14 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/features/common/bottom_nav_bar.dart';
 import '../../../core/routing/routes.dart';
 
-class FAQPageView extends StatefulWidget {
-  const FAQPageView({super.key});
+class FAQsView extends StatefulWidget {
+  const FAQsView({super.key});
 
   @override
-  State<FAQPageView> createState() => _FAQPageViewState();
+  State<FAQsView> createState() => _FAQsViewState();
 }
 
-class _FAQPageViewState extends State<FAQPageView> {
+class _FAQsViewState extends State<FAQsView> {
   String selectedTab = "General";
 
   final Map<String, List<Map<String, String>>> faqData = {
