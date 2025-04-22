@@ -34,6 +34,7 @@ import '../../features/payment_method/pages/new_card.dart';
 import '../../features/payment_method/pages/payment_method_view.dart';
 import '../../features/product_detail/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
+import '../../features/search/manager/search_bloc.dart';
 import '../../features/search/pages/search_view.dart';
 import '../client.dart';
 
@@ -138,8 +139,11 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.search,
-      builder: (context, state) => SearchPageView(
-        isEmpty: false,
+      builder: (context, state) => BlocProvider(
+        create: (context) => SearchBloc(
+          repo: context.read(),
+        ),
+        child: SearchPageView(isEmpty: true),
       ),
     ),
     GoRoute(
