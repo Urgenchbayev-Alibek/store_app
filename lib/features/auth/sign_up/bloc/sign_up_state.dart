@@ -1,34 +1,19 @@
-import 'package:equatable/equatable.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../data/models/user_model.dart';
 
- enum SignUpStatus { idle, loading, success, error }
-class SignUpState extends Equatable {
-  final UserModel user;
-  final SignUpStatus status;
+part 'sign_up_state.freezed.dart';
 
-  const SignUpState({
-    required this.user,
-    required this.status,
-  });
+enum SignUpStatus { idle, loading, success, error }
 
-  factory SignUpState.initial() {
-    return SignUpState(
-      user: UserModel(fullName: '', email: '', password: ''),
-      status: SignUpStatus.idle,
-    );
-  }
+@freezed
+abstract class SignUpState with _$SignUpState {
+  const factory SignUpState({
+    required UserModel user,
+    required SignUpStatus status,
+  }) = _SignUpState;
 
-  SignUpState copyWith({
-    UserModel? user,
-    SignUpStatus? status,
-  }) {
-    return SignUpState(
-      user: user ?? this.user,
-      status: status ?? this.status,
-    );
-  }
-
-  @override
-  List<Object?> get props => [user, status];
+  factory SignUpState.initial() => SignUpState(
+    user: UserModel(fullName: '', email: '', password: ''),
+    status: SignUpStatus.idle,
+  );
 }

@@ -87,9 +87,9 @@ class CheckoutView extends StatelessWidget {
                     const SizedBox(width: 5),
                     const Expanded(
                         child: Text(
-                      " **** **** **** 2512",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    )),
+                          " **** **** **** 2512",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        )),
                     SvgPicture.asset("assets/icons/edit.svg", width: 19, height: 20),
                   ],
                 ),

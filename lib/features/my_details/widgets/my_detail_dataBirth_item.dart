@@ -43,7 +43,7 @@ class MyDetailsDateBirth extends StatelessWidget {
           ),
           onChanged: (dateTime) {
             if (dateTime != null) {
-              bloc.birthContr.text = dateTime.toIso8601String().split("T").first;
+              bloc.birthController.text = dateTime.toIso8601String().split("T").first;
             }
           },
         ),

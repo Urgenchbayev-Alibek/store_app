@@ -34,14 +34,14 @@ import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 import '../../features/payment_method/pages/new_card.dart';
 import '../../features/payment_method/pages/payment_method_view.dart';
-import '../../features/product_detail/pages/reviews_page.dart';
+import '../../features/reviews/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
 import '../../features/search/pages/search_view.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.login,
+  initialLocation: Routes.productDetail,
   routes: [
     GoRoute(
       path: Routes.splashScreen,

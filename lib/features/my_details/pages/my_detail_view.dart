@@ -43,12 +43,12 @@ class MyDetailView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   StoreAppTextFieldString(
-                    controller: context.read<MyDetailsBloc>().fullNameContr,
+                    controller: context.read<MyDetailsBloc>().fullNameController,
                     validator: (value) => null,
                     text: 'Full Name',
                   ),
                   StoreAppTextFieldString(
-                    controller: context.read<MyDetailsBloc>().emailContr,
+                    controller: context.read<MyDetailsBloc>().emailController,
                     validator: (value) => null,
                     text: 'Email Address',
                   ),
@@ -99,7 +99,7 @@ class MyDetailView extends StatelessWidget {
                     },
                   ),
                   MyDetailsDateBirth(title: "Data"),
-                  MyDetailsNumberItem(controller: context.read<MyDetailsBloc>().numberContr),
+                  MyDetailsNumberItem(controller: context.read<MyDetailsBloc>().numberController),
                   SizedBox(height: 60),
                   BlocConsumer<MyDetailsBloc, MyDetailsState>(
                     builder: (context, state) => StoreAppElevatedButton(
@@ -107,7 +107,7 @@ class MyDetailView extends StatelessWidget {
                       callback: () {
                         if (_formKey.currentState?.validate() ?? false) {
                           final bloc = context.read<MyDetailsBloc>();
-                          bloc.genderContr.text = genderNotifier.value ?? '';
+                          bloc.genderController.text = genderNotifier.value ?? '';
                           bloc.add(MyDetailsLoad());
                         }
                       },

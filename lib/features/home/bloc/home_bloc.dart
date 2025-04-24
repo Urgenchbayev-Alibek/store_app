@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../data/models/product_model.dart';
 import '../../../data/repositories/products_repository.dart';
-
 part 'home_event.dart';
 part 'home_state.dart';
 
