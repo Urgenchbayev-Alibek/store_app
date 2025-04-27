@@ -11,6 +11,7 @@ import 'package:store_app/features/my_details/pages/my_details_view1.dart';
 import 'package:store_app/features/my_orders/pages/my_orders_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
 import 'package:store_app/main.dart';
+import '../../features/Customer_service/pages/customer_service.dart';
 import '../../features/account/pages/account_view.dart';
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/adress_page.dart';
@@ -41,7 +42,7 @@ import '../client.dart';
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
 
-  initialLocation: Routes.FAQs,
+  initialLocation: Routes.customerService,
 
   routes: [
     GoRoute(
@@ -189,6 +190,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.FAQs,
       builder: (context, state) => FAQPageView(),
+    ),
+    GoRoute(
+      path: Routes.customerService,
+      builder: (context, state) =>CustomerServiceView(),
     ),
   ],
 );
