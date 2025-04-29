@@ -12,11 +12,10 @@ class UserModel {
   Map<String, dynamic> toJson() {
     return {
       "fullName": fullName,
-      "email" : email,
+      "email": email,
       "password": password,
     };
   }
-
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -24,5 +23,31 @@ class UserModel {
       email: json["email"],
       password: json["password"],
     );
+  }
+}
+
+class AuthUpdateModel {
+  final String gender;
+  final String fullName;
+  final String email;
+  final String phoneNumber;
+  final String birthdate;
+
+  AuthUpdateModel({
+    required this.gender,
+    required this.fullName,
+    required this.email,
+    required this.phoneNumber,
+    required this.birthdate,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "gender": gender,
+      'fullName': fullName,
+      "email": email,
+      'phoneNumber': phoneNumber,
+      'birthdate': birthdate,
+    };
   }
 }

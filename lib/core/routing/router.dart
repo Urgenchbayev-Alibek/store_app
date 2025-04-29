@@ -7,11 +7,13 @@ import 'package:store_app/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:store_app/features/auth/sign_up/pages/sing_up_view.dart';
 import 'package:store_app/features/f_a_q/pages/f_a_q_view.dart';
 import 'package:store_app/features/my_cart/pages/my_cart_view.dart';
-import 'package:store_app/features/my_details/pages/my_details_view1.dart';
+import 'package:store_app/features/my_details/pages/my_detail_view.dart';
 import 'package:store_app/features/my_orders/pages/my_orders_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
 import 'package:store_app/main.dart';
+
 import '../../features/Customer_service/pages/customer_service.dart';
+
 import '../../features/account/pages/account_view.dart';
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/adress_page.dart';
@@ -26,6 +28,7 @@ import '../../features/checkout/pages/checkout_view.dart';
 import '../../features/help_center/pages/help_center_view.dart';
 import '../../features/home/bloc/home_bloc.dart';
 import '../../features/home/pages/home_view.dart';
+import '../../features/my_details/bloc/my_details_bloc.dart';
 import '../../features/notification/widgets/empty_notifications_page.dart';
 import '../../features/notification/widgets/notifications_view.dart';
 import '../../features/onboarding/managers/splash_screen_view_model.dart';
@@ -33,7 +36,7 @@ import '../../features/onboarding/pages/onboarding_view.dart';
 import '../../features/onboarding/pages/splash_screen_view.dart';
 import '../../features/payment_method/pages/new_card.dart';
 import '../../features/payment_method/pages/payment_method_view.dart';
-import '../../features/product_detail/pages/reviews_page.dart';
+import '../../features/reviews/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
 import '../../features/search/manager/search_bloc.dart';
 import '../../features/search/pages/search_view.dart';
@@ -43,6 +46,7 @@ final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
 
   initialLocation: Routes.customerService,
+
 
   routes: [
     GoRoute(
@@ -181,15 +185,19 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.myDetails,
-      builder: (context, state) => MyDetailsView1(),
+      builder: (context, state) => BlocProvider(
+          create: (context) => MyDetailsBloc(
+                repo: context.read(),
+              ),
+          child: MyDetailView()),
     ),
     GoRoute(
       path: Routes.newCard,
       builder: (context, state) => NewCardView(),
     ),
     GoRoute(
-      path: Routes.FAQs,
-      builder: (context, state) => FAQPageView(),
+      path: Routes.faqs,
+      builder: (context, state) => FAQsView(),
     ),
     GoRoute(
       path: Routes.customerService,

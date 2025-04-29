@@ -14,32 +14,32 @@ class SavedItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: StoreAppBar(title: "Saved Items"),
-        body: isEmpty ? _buildEmptyState() : _buildGrid(),
-        bottomNavigationBar: StoreBottomNavigationBar(
-          selectedIndex: 2,
-          onTap: (index) {
-            switch (index) {
-              case 0:
-                context.push(Routes.home);
-                break;
-              case 1:
-                context.push(Routes.search);
-                break;
-              case 2:
-                context.push(Routes.saved);
-                break;
-              case 3:
-                context.push(Routes.myCart);
-                break;
-              case 4:
-                context.push(Routes.account);
-                break;
-              default:
-                break;
-            }
-          },
-        ),
+      appBar: StoreAppBar(title: "Saved Items"),
+      body: isEmpty ? _buildEmptyState() : _buildGrid(),
+      bottomNavigationBar: StoreBottomNavigationBar(
+        selectedIndex: 2,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              context.push(Routes.home);
+              break;
+            case 1:
+              context.push(Routes.search);
+              break;
+            case 2:
+              context.push(Routes.saved);
+              break;
+            case 3:
+              context.push(Routes.myCart);
+              break;
+            case 4:
+              context.push(Routes.account);
+              break;
+            default:
+              break;
+          }
+        },
+      ),
     );
   }
 

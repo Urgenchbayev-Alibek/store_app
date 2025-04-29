@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_app/core/utils/colors.dart';
 import 'package:store_app/features/common/store_app_bar.dart';
 import 'package:store_app/features/common/store_text_button.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../../core/sizes.dart';
 import '../../common/store_text_item.dart';
 
@@ -28,7 +30,9 @@ class CheckoutView extends StatelessWidget {
                 children: [
                   Text("Delivery Address", style: TextStyle(fontFamily: "General Sans", fontSize: 16, fontWeight: FontWeight.bold)),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.push(Routes.addressPage);
+                      },
                       child: const Text(
                         "Change",
                         style: TextStyle(decoration: TextDecoration.underline, fontSize: 14, fontFamily: "General Sans"),
@@ -83,9 +87,9 @@ class CheckoutView extends StatelessWidget {
                     const SizedBox(width: 5),
                     const Expanded(
                         child: Text(
-                      " **** **** **** 2512",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    )),
+                          " **** **** **** 2512",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        )),
                     SvgPicture.asset("assets/icons/edit.svg", width: 19, height: 20),
                   ],
                 ),
