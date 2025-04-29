@@ -12,6 +12,8 @@ import 'package:store_app/features/my_orders/pages/my_orders_view.dart';
 import 'package:store_app/features/product_detail/pages/product_details_page.dart';
 import 'package:store_app/main.dart';
 
+import '../../features/Customer_service/pages/customer_service.dart';
+
 import '../../features/account/pages/account_view.dart';
 import '../../features/address/managers/new_address_bloc.dart';
 import '../../features/address/pages/adress_page.dart';
@@ -36,12 +38,16 @@ import '../../features/payment_method/pages/new_card.dart';
 import '../../features/payment_method/pages/payment_method_view.dart';
 import '../../features/reviews/pages/reviews_page.dart';
 import '../../features/saved_items/pages/saved_item_view.dart';
+import '../../features/search/manager/search_bloc.dart';
 import '../../features/search/pages/search_view.dart';
 import '../client.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.productDetail,
+
+  initialLocation: Routes.customerService,
+
+
   routes: [
     GoRoute(
       path: Routes.splashScreen,
@@ -138,8 +144,11 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.search,
-      builder: (context, state) => SearchPageView(
-        isEmpty: false,
+      builder: (context, state) => BlocProvider(
+        create: (context) => SearchBloc(
+          repo: context.read(),
+        ),
+        child: SearchPageView(isEmpty: true),
       ),
     ),
     GoRoute(
@@ -189,6 +198,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.faqs,
       builder: (context, state) => FAQsView(),
+    ),
+    GoRoute(
+      path: Routes.customerService,
+      builder: (context, state) =>CustomerServiceView(),
     ),
   ],
 );
